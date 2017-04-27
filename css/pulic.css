@@ -1,0 +1,70 @@
+		[v-cloak] {
+		  display: none;
+		}
+		html {
+			background-color: #f4f4f4;
+		}
+		header {
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 3rem;
+			background: #eaeaea;
+		}
+		nav {
+			display: flex;
+			height: 100%;
+			text-align: center;
+			line-height: 3rem;
+		}
+		nav .goback {
+			float: left;
+			width: 3rem;
+		}
+		nav .shopcart {
+			float: right;
+			width: 3rem;
+		}
+		nav .goback img,nav .shopcart img {
+			align-items: center;
+			width: 2rem;
+			height: 2rem;
+			margin-top: .5rem;
+		}
+		nav .title	{
+			flex-grow: 1;
+			font-size: 1.2rem;
+		}
+		footer {
+			float: left;
+			width: 100%;
+			height: 8rem;
+			padding: 1rem 0;
+			margin-bottom: 5rem;
+			text-align:center;
+		}
+		footer p {
+			line-height: 2rem;
+			font-size: .8rem;
+		}
+		.gotop-box{
+			font-size: 1.5em;
+			position: fixed; 
+			bottom:5em;
+			right:.4em;
+			z-index:2
+		}
+		.gotop-box a{
+			width: 2.8em;
+			height: 2.8em;
+			background:url(images/kf_bg.png) no-repeat;
+			background-size:3em;
+		}
+		.gotop-box .kf{
+			display:block;
+		}
+		.gotop-box .gotop{
+			display:block;
+			background-position: -0.1em -3.0em;
+		}

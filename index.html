@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<head>
+	<title>{$shop_name}</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="format-detection" content="telephone=no">
+	<meta name="keywords" content="九牧,九牧卫浴,九牧官方商城,JOMOO,九牧官网,九牧官方旗舰店,卫浴">
+	<link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+	<link rel="stylesheet" href="css/normaize.css">
+	<link href="https://cdn.bootcss.com/Swiper/3.2.6/css/swiper.min.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="css/default.css">
+	<link rel="stylesheet" href="css/index.css">
+	<style>
+		html {
+			font-size: 20px;
+		}
+		@media only screen and (max-width: 320px), only screen and (max-device-width:320px) {
+		    html {
+			    font-size:10px;
+		    }
+		}
+		@media only screen and (max-width: 640px), only screen and (max-device-width:640px) {
+		    html {
+			    font-size:20px;
+		    }
+		}
+		html{font-size:10px}
+		@media screen and (min-width:321px) and (max-width:375px){
+				html{
+					font-size:11px;
+				}}
+		@media screen and (min-width:376px) and (max-width:414px){
+				html{
+					font-size:12px;
+				}}
+		@media screen and (min-width:415px) and (max-width:639px){
+				html{
+					font-size:15px;
+				}}
+		@media screen and (min-width:640px) and (max-width:719px){
+				html{
+					font-size:20px;
+				}}
+		@media screen and (min-width:720px) and (max-width:749px){
+				html{
+					font-size:22.5px;
+				}}
+		@media screen and (min-width:750px) and (max-width:799px){
+				html{
+					font-size:23.5px;
+				}
+			}
+				
+		@media screen and (min-width:800px){
+				html{
+					font-size:25px;
+				}}
+		.swiper-container {
+		    width: 100%;
+		}  
+		.swiper-wrapper {
+			width: 100%;
+		}
+		.swiper-slide {
+			width: 100%;
+		}
+		.swiper-slide img {
+			width: 100%;
+			height: 100%;
+		}
+	</style>
+</head>
+</head>
+<body>
+	<!-- 导航栏 -->
+	<nav>
+		<div class="jm_logo">
+			<a href="index.php">
+				<img src="images/nlogo.png" alt="九牧卫浴官方商城">
+			</a>
+		</div>
+		<ul class="cart">
+			<li>
+				<a href="user.php?act=user_center">
+					<img src="images/user_ico.png" alt="用户">
+				</a>
+			</li>
+			<li>	
+				<a href="cart.php">
+					<img src="images/cart_ico.png" alt="购物车">
+				</a>
+			</li>
+		</ul>
+	</nav>
+	<div class="main" id="app">
+		<!-- 搜索框 -->
+		<div class="search">
+			<div class="input-group">
+				<form action="search.php" id="searchForm" name="searchForm" class="form">
+					<input type="text" class="input" autocomplete="off" name="keywords" id="search_word" placeholder="{if $search_keywords}{$search_keywords|escape}{else}搜索商品{/if}" value="">
+					<span class="button" id="submit" onclick="saveToStorage()">
+						<img src="images/ico-search.png" alt="">
+					</span>
+				</form>
+
+			</div>
+		</div>
+		<!-- 菜单 -->
+		<ul class="class_cart lazy">
+			<li>
+				<a href="http://m.jomooshop.com/category-20.html">
+					<img src="images/icon_indexn_01.png" alt="">
+					<p>整体卫浴</p>
+				</a>
+			</li>
+			<li>
+				<a href="http://m.jomooshop.com/goods_list.php?type=new">
+					<img src="images/icon_indexn_02.png" alt="">
+					<p>新品上市</p>
+				</a>
+			</li>
+			<li>
+				<a href="http://m.jomooshop.com/goods_list.php?type=hot">
+					<img src="images/icon_indexn_03.png" alt="">
+					<p>热销主推</p>
+				</a>
+			</li>
+			<li>
+				<a href="http://m.jomooshop.com/category.html">
+					<img src="images/icon_indexn_11.png" alt="">
+					<p>全部商品</p>
+				</a>
+			</li>
+		</ul>
+		<div class="boximg m-lazyload">
+		   <a :href="link" v-for="(item,index) in topimgs">
+				<img :src="topimgs[index].src" alt="九牧卫浴官方商城">
+		   </a>
+		</div>
+		<ul class="list-group m-lazyload clearfix">
+			<li v-for="(item,index) in seckill">
+				<a :href="seckill[index].link">
+					<img src="images/lazy.gif" class="m-lazyload" :data-original="seckill[index].src"  alt="">
+				</a>
+			</li>
+		</ul>
+		<div class="boximg clearfix">
+			<a :href="link" v-for="(item,index) in centerimgs">
+				<img src="images/lazy.gif" :data-original="centerimgs[index].src" class="m-lazyload" alt="九牧卫浴官方商城">
+			</a>
+		</div>
+		<div class="boximg clearfix">
+			<a :href="centerimgs2[index].link" v-for="(item,index) in centerimgs2"><img src="images/lazy.gif" :data-original="centerimgs2[index].src" alt="九牧卫浴官方商城" class="m-lazyload"></a>
+		</div>
+		<div class="banner clearfix">
+			<div class="swiper-container">
+			    <div class="swiper-wrapper">
+			        <div class="swiper-slide" v-for="(item,index) in bannerimgs">
+						<a :href="bannerimgs[index].link"><img src="images/lazy.gif" :data-original="bannerimgs[index].src" class="m-lazyload" alt=""></a>
+			        </div>
+			    </div>
+			    <!-- 如果需要分页器 -->
+			    <div class="swiper-pagination"></div>
+			</div>
+		</div>
+		<ul class="shopclass m-lazyload clearfix">
+			<li v-for="(item,index) in shopclass">
+				<a :href="shopclass[index].link">
+					<img src="images/lazy.gif" class="m-lazyload" :data-original="shopclass[index].src"  alt="">
+				</a>
+			</li>
+		</ul>
+		<div class="fixpic">
+			<img :src="huasa" alt="花洒">
+		</div>
+		<ul class="list-group m-lazyload">
+			<li v-for="(item,index) in huasalist">
+				<a :href="huasalist[index].link">
+					<img src="images/lazy.gif" class="m-lazyload" :data-original="huasalist[index].src"  alt="">
+				</a>
+			</li>
+		</ul>
+		<div class="fixpic">
+			<img :src="matong" alt="马桶">
+		</div>
+		<ul class="list-group">
+			<li v-for="(item,index) in matonglist"><a :href="matonglist[index].link"><img src="images/lazy.gif" :data-original="matonglist[index].src" :alt="matonglist[index].name" class="m-lazyload"></a></li>
+		</ul>
+		<div class="fixpic">
+			<img :src="shuicao" alt="水槽">
+		</div>
+		<ul class="list-group">
+			<li v-for="(item,index) in shuicaolist"><a :href="shuicaolist[index].link"><img src="images/lazy.gif" :data-original="shuicaolist[index].src" alt="" class="m-lazyload"></a></li>
+		</ul>
+		<div class="fixpic">
+			<img :src="yushigui" alt="">
+		</div>
+		<ul class="list-group">
+			<li v-for="(item,index) in yushiguilist"><a :href="yushiguilist[index].link"><img src="images/lazy.gif" :data-original="yushiguilist[index].src" alt="浴室柜" class="m-lazyload"></a></li>
+		</ul>
+		<div class="fixpic">
+			<img :src="wujin" alt="">
+		</div>
+		<ul class="list-group">
+			<li v-for="(item,index) in wujinlist"><a :href="wujinlist[index].link"><img src="images/lazy.gif" :data-original="wujinlist[index].src" alt="" class="m-lazyload"></a></li>
+		</ul>
+		<div class="sales_title">
+			<a href="">花洒热销查看更多</a>
+		</div>
+		<ul class="sales">
+			<li>
+				<a href="{$row.url}">
+					<img data-original="{$row.thumb}" src="{$row.thumb}">
+					<span class="sl">{$row.name}</span>
+					<p>{if $row.promote_price neq ""}{$row.promote_price}{else}{$row.shop_price}{/if}</p>
+				</a>
+			</li>
+		</ul>
+		<div class="sales_title">
+			<a href="">马桶热销查看更多</a>
+		</div>
+		<ul class="sales">
+			<li>
+				<a  href="{$row.url}">
+					<img data-original="{$row.thumb}" src="{$row.thumb}" alt="{$row.name}">
+					<span class="sl">{$row.name}</span>
+					<p>{if $row.promote_price neq ""}{$row.promote_price}{else}{$row.shop_price}{/if}</p>
+				</a>
+			</li>
+		</ul>
+		<div class="sales_title">
+			<a href="">浴室柜热销查看更多</a>
+		</div>
+		<ul class="sales">
+			<li>
+				<a href="{$row.url}">
+					<img data-original="{$row.thumb}" src="{$row.thumb}" alt="{$row.name}">
+					<span class="sl">{$row.name}</span>
+					<p>{if $row.promote_price neq ""}{$row.promote_price}{else}{$row.shop_price}{/if}</p>
+				</a>			
+			</li>
+		</ul>
+	</div>
+	<!--Footer Starting-->
+	{include file='foot.dwt'}
+	<!--Footer Ending-->
+	<!-- <div class="gotop">
+		
+	</div>
+	<div class="meun">
+		<p>菜单</p>
+		<span class="cartnum">0</span>
+		<span></span>
+	</div>
+	<ul class="botton_meun hide_meun">
+		<li>
+			<a href="">
+				<i class="global-nav__iconfont global-nav__icon-index">󰀁</i>
+				<p>
+					首页
+				</p>
+			</a>
+		</li>
+		<li>
+			<a href="">
+				<i class="global-nav__iconfont global-nav__icon-category">󰀂</i>
+				<p>
+					分类
+				</p>
+			</a>
+		</li>
+		<li>
+			<a href="">
+				<i class="global-nav__iconfont global-nav__icon-search">󰀃</i>
+				<p>
+					搜索
+				</p>
+			</a>
+		</li>
+		<li>	
+			<a href="">
+				<i class="global-nav__iconfont global-nav__icon-shop-cart">󰀄</i>
+				<p>
+					购物车
+				</p>
+			</a>
+		</li>
+		<li>
+		    <a href="">
+			    <i class="global-nav__iconfont global-nav__icon-my-yhd">󰀅</i>
+				<p>
+					我的九牧
+				</p>
+		    </a>
+		</li>
+		<li class="rightmeun"></li>
+	</ul>
+	<div class="gotop-box"><a href="javascript:;" class="kf" onclick="live800()"></a><a id="gotop" class="gotop" data-load="load" style="display: none;"></a><style type="text/css"></style></div> -->
+</body>
+<script src="https://cdn.bootcss.com/zepto/1.0rc1/zepto.min.js"></script>
+<script src="https://cdn.bootcss.com/Swiper/3.2.6/js/swiper.jquery.js"></script>
+<!-- 先引入 Vue -->
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+<script src="js/zepto.picLazyLoad.min.js"></script>
+<script src="js/index.js"></script>
+<script>
+//banner 轮播图
+var mySwiper = new Swiper ('.swiper-container', {
+    direction: 'horizontal',
+    autoplay : 2000,
+    loop: true,
+    // 如果需要分页器
+    pagination: '.swiper-pagination'
+  })        
+//     function adddate() {
+//     	for(var i = 0; i < 8;i++) {
+//     		var list = document.createElement("li");
+// 			$(list).insertBefore(".loadmore");
+//     	}
+//     }
+// 	$(".loadmore").on("click",function () {
+// 		adddate();
+// 	})
+// function live800(){
+// 	window.open('https://v1.live800.com/live800/chatClient/chatbox.jsp?companyID=449606&jid=4713019991&skillId=2686&enterurl=http%3A%2F%2F121.41.59.30%2F%3Fapp_act%3Dindex%2F%26template%3Djomoo%26docp%3D1&pagetitle=%E9%A6%96%E9%A1%B5-%E4%B9%9D%E7%89%A7%E5%95%86%E5%9F%8E-%E4%B8%AD%E5%9B%BD%E9%AB%98%E7%AB%AF%E5%8D%AB%E6%B5%B4%E9%A2%86%E5%AF%BC%E8%80%85&pagereferrer=http%3A%2F%2F121.41.59.30%2F%3Fapp_act%3Dadmin%2Fsite%2Fsite_template%2Fpage_list%26template%3Djomoo%26category%3D1&firstEnterUrl=http%3A%2F%2F121.41.59.30%2F%3Fapp_act%3Dindex%2F%26template%3Djomoo%26docp%3D1&lan=zh&tm=1430634500286&s=1','_blank');
+// }
+// $(document).on("scroll",function () {
+// 	if(document.body.scrollTop > 400) {
+// 		$("#gotop").show();
+// 	} else {
+// 		$("#gotop").hide();
+// 	}
+// })
+// $("#gotop").on("click",function () {
+// 		document.body.scrollTop = 0;
+// });
+$('.m-lazyload').picLazyLoad({
+    threshold: 2000,
+    placeholder: 'images/lazy.gif'
+});
+// $(".meun").on("click",function () {
+// 	$(".botton_meun").removeClass("hide_meun");
+// 	$(this).hide();
+// 	$(".rightmeun").show();
+// })
+// $(".rightmeun").on("click",function () {
+// 	$(".botton_meun").addClass("hide_meun");
+// 	$(".meun").show();
+// 	$(this).hide();
+// })
+//当页面刷新时，从sessionStorage恢复之前输入的内容
+ window.onload = function(){
+    if (window.sessionStorage) {
+        var name = window.sessionStorage.getItem("name");
+        if (name != "" || name != null){
+            document.getElementById("name").value = name;
+         }
+     }
+ };
+
+ //将数据保存到sessionStorage对象中
+ function saveToStorage() {
+    if (window.sessionStorage) {
+        var name = document.getElementById("search_word").value;
+        window.sessionStorage.setItem("name", name);
+        window.location.href="session_storage.html";
+     }
+     if($("#search_word").val()){
+			$("#searchForm").submit();
+		} else {
+			alert("搜索商品");
+			return false;
+		}
+ }
+ </script>
+</script>
+</html>

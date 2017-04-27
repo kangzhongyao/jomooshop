@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>商品列表页</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="format-detection" content="telephone=no">
+	<link rel="shortcut icon" href="../images/favicon.ico" type="image/x-icon">
+	<link rel="stylesheet" href="../css/reset.css">
+	<link rel="stylesheet" href="../css/pulic.css">
+	<style>
+		.tabs {
+			display: flex;
+			background-color: #f7f7f7;
+			border-bottom: 1px solid #e6e6e6;
+		}
+		.tabs .tab-item {
+			flex-grow: 1;
+			height: 3rem;
+			line-height: 3rem;
+			text-align: center;
+			border-right: 1px solid #e6e6e6;
+		}
+		.shop-list	{
+			margin-top: 6rem;
+		}
+		.shop-list li {
+			float: left;
+			width: 47vw;
+			margin: 0.2rem 1vw;
+			text-align: center;
+			border: 1px solid #ccc;
+		}
+		.shop-list li img {
+			width: 100%;
+		}
+		.shop-list li .price {
+			color: #f00;
+			width: 80%;
+			margin: 0 auto;
+			line-height: 1.5rem;
+		}
+		.shop-list li .title {
+			margin: 0 auto;
+			overflow: hidden;
+			white-space: nowrap;
+			width: 95%;
+			text-overflow: ellipsis;
+			line-height: 1.5rem;
+		}
+		html {
+			overflow-x: hidden; 
+		}
+		.shop-list .loadmore {
+			width: 100%;
+			margin: 0 auto;
+			line-height: 3rem;
+			height: 3rem;
+			border: none;
+		}
+	</style>
+</head>
+<body>
+	<div id="app">
+		<header>
+			<nav>
+				<a href="">
+					<div class="goback">
+						<img src="../images/icon_01.png" alt="">
+					</div>
+				</a>
+				<div class="title">分类浏览</div>
+				<a href="">
+					<div class="shopcart">
+						<img src="../images/cart_ico.png" alt="">
+					</div>
+				</a>
+			</nav>
+			<ul class="tabs">
+				<li class="tab-item">推荐</li>
+				<li class="tab-item">上市</li>
+				<li class="tab-item">价格</li>
+			</ul>
+		</header>
+		<ul class="shop-list">
+			<li v-for="(item,index) in list">
+				<a href="">
+					<img :src="list[index].src" alt="九牧厨卫官方商城">
+					<p v-text="list[index].price" class="price"></p>
+					<p v-text="list[index].title" class="title"></p>
+				</a>
+			</li>
+			<li class="loadmore">
+				点击加载更多...
+			</li>
+		</ul>
+		<footer>
+			<p>Copyright © 2014-2016 九牧厨卫股份有限公司 版权所有</p>
+			<p>全国管家服务热线：400-1919-999</p>
+			<p>闽ICP备11009004号-3</p>
+		</footer>
+	</div>
+</body>
+<!-- 先引入 Vue -->
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+<script>
+	var app = new Vue({
+		el: "#app",
+		data: {
+			list:[{src : "../images/longtou1.jpg",
+				price : "￥399.00元",
+				title : "JOMOO九牧 单把单孔冷热面盆龙头 洗手盆龙头32287",
+				link  : ""
+				},
+				{src : "../images/longtou2.jpg",
+				price : "￥249.00元",
+				title : "JOMOO九牧 浴室卫生间洗脸盆冷热单把单孔面盆龙头 32267-334/1B-Z ",
+				link  : ""},
+				{src : "../images/longtou3.jpg",
+				price : "￥369.00元",
+				title : "JOMOO九牧 高性价比单把单孔冷热面盆龙头 32282",
+				link  : ""},
+				{src : "../images/longtou4.jpg",
+				price : "￥549.00元",
+				title : "JOMOO九牧 简欧单把双控面盆龙头 32284",
+				link  : ""},
+				{src : "../images/longtou5.jpg",
+				price : "￥599.00元",
+				title : "JOMOO九牧 【新品】单把单孔360°可旋转可洗头抽拉面盆龙头 32292",
+				link  : ""},
+				{src : "../images/longtou6.jpg",
+				price : "￥639.00元",
+				title : "JOMOO九牧 【新品】单把单孔抽拉面盆龙头32197",
+				link  : ""},
+			]
+			}
+	})
+</script>
+</html>
